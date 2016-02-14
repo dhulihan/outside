@@ -12,5 +12,9 @@ module Outside
     get :zipcode do
       { zipcode: params[:zipcode] }
     end
+
+    get :hello do
+      { msg: "Hello"}
+    end
   end
 end
