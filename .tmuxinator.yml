@@ -1,5 +1,5 @@
 name: outside
 windows:
   - main: 
-  - foreman: foreman start
+  - guard: b guard
   # - foreman: foreman start

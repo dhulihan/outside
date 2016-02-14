@@ -7,4 +7,5 @@ group :development do
   gem 'rspec'
   gem 'guard'
   gem 'guard-rack'
+  gem 'guard-rspec'
 end
