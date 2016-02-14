@@ -1,2 +1,2 @@
 require "rspec"
-require "../api"
+require "../lib/outside"
