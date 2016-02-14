@@ -1,0 +1,5 @@
+name: outside
+windows:
+  - main: 
+  - foreman: foreman start
+  # - foreman: foreman start
