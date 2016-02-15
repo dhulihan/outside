@@ -24,7 +24,7 @@ module Outside
       when "Unhealthy for Sensitive Groups"
         ["Unhealthy for Sensitive Groups", "Stay inside if you're sensitive.", "You shouldn't if you have allergies or asthma.", "Pregnant? Better not risk it."].sample
       when "Unhealthy"
-        ["Stay inside if you can.", "Cancel that picnic."].sample      
+        ["Stay inside if you can.", "Cancel that picnic.", "The current air quality is UNHEALTHY."].sample      
       when "Very Unhealthy"
         ["It's bad out there."].sample
       when "Hazardous"

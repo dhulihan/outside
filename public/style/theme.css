@@ -1,3 +1,8 @@
+body {
+  background:url(../img/clouds.jpg) no-repeat top center;
+  background-color: #222;
+}
+
 #summary {
 	font-size: 32px
 }
@@ -16,17 +21,18 @@
 	display: none;
 }
 
-#more-info {
+#more-info {	
 	margin-top: 20px;
 }
 
 .footer {
-  padding: 20px;
+  /*height: 30px;*/
+  padding-bottom: 40px;
   position: absolute;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  background-color: #333;
+  /*background-color: #333;*/
 }
 
 .text-warning {
