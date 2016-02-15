@@ -18,7 +18,7 @@ RSpec.describe Outside::API do
       get '/api/v1/zipcode', {zipcode: "84043"}
       expect(last_response.status).to eq(200)
       j = JSON.parse(last_response.body)
-      expect(j["observation"]).to_not be_nil
+      expect(j["observations"]).to_not be_nil
     end
   end  
 end

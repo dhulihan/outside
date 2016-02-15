@@ -11,38 +11,6 @@ class LengthExactly < Grape::Validations::Base
 end
 
 module Outside
-  class AirNow
-    class << self
-      def api_base
-        "http://www.airnowapi.org"
-      end 
-
-      def api_key
-        ENV['AIRNOW_API_KEY']
-      end
-
-      def observation(options = {})
-        options[:distance] ||= 25
-        options[:format]   ||= 'application/json'
-
-        if options[:zipcode]
-          # make AirNow API call to fetch current conditions
-          r = RestClient.get AirNow.api_base + "/aq/observation/zipCode/current", {
-            :params => {
-              'zipCode' => options[:zipcode], 
-              'distance' => options[:distance], 
-              'format' => options[:format], 
-              'API_KEY' => AirNow.api_key
-            }
-          }
-          return JSON.parse(r.to_str)
-        else 
-          raise "options[:zipcode] undefined"
-        end
-      end 
-    end 
-  end 
-
   class API < Grape::API
     format :json
     prefix :api
@@ -55,10 +23,8 @@ module Outside
     end 
     get :zipcode do
       zipcode = params[:zipcode]
-      r = Outside::AirNow.observation(zipcode: zipcode)
-      { 
-        observation: r
-      }
+      observations = Outside::AirNow.observations(zipcode: zipcode)
+      { observations: observations }
     end
 
     get :hello do
