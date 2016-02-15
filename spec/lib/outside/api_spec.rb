@@ -15,10 +15,10 @@ RSpec.describe Outside::API do
 
     it 'returns a correct response' do
       get '/api/v1/zipcode', {zipcode: "84043"}
-      expect(last_response.status).to eq(200)
       j = JSON.parse(last_response.body)
+      expect(last_response.status).to eq(200)
       expect(j["observations"]).to_not be_nil
-      expect(j["message"]).to_not be_nil
+      expect(j["status"]).to_not be_nil
     end
 
     context 'using the zip with only O3 nearby' do
@@ -26,6 +26,7 @@ RSpec.describe Outside::API do
         get '/api/v1/zipcode', {zipcode: "84101"}
         expect(last_response.status).to eq(500)
         j = JSON.parse(last_response.body)
+        expect(j["error"]).to_not be_nil
         expect(j["observations"]).to be_nil
         expect(j["error"]).to_not be_nil
       end

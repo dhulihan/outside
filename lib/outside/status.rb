@@ -1,16 +1,14 @@
+require "json"
 module Outside
   class Status
-    attr_accessor :message, :summary
+    attr_accessor :message, :summary, :scale_percent
 
-    def initialize(observations = [])
-      unless observations.empty?
-        aqi_obs = observations.find {|i| i["ParameterName"] == "PM2.5"}
-        if aqi_obs
-          @message = ambiguous_message(aqi_obs["Category"]["Name"])
-          @summary = ambiguous_summary(aqi_obs["Category"]["Name"])
-        else
-          raise "No AQI observation found: #{observations.inspect}"
-        end
+    def initialize(observation)
+      if observation["Category"]
+        @message = ambiguous_message(observation["Category"]["Name"])
+        @summary = ambiguous_summary(observation["Category"]["Name"])
+      else
+        raise 'observation["Cateogry"] undefined'
       end
     end
 
@@ -57,5 +55,9 @@ module Outside
     def to_s
       @message
     end
+
+    def to_json(options = nil)
+      {message: @message, summary: @summary, scale_percent: @scale_percent}.to_json
+    end 
   end
 end

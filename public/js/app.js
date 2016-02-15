@@ -19,8 +19,8 @@ $(function() {
 			success: function(data, status, xhr){
 				debug("success:")
 				$("#results").removeClass("text-danger")
-				$("#summary").html(data.summary)
-				switch (data.summary) {
+				$("#summary").html(data.status.pm2.summary)
+				switch (data.status.pm2.summary) {
 				  case "YES":
 					$("#summary").addClass("text-success")
 				    break;
@@ -31,7 +31,7 @@ $(function() {
 					$("#summary").addClass("text-danger")
 				    break;
 				}				
-				$("#message").html(data.message)
+				$("#message").html(data.status.pm2.message)
 				// $("#more-info-btn").show()
 			},
 			error: function(xhr, status, error){
