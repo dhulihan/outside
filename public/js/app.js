@@ -14,12 +14,25 @@ $(function() {
 			beforeSend: function ( xhr ) {
 				debug("beforeSend")
 				debug("zipcode: " + zipcode)
-				$("a .fa").addClass("fa-spin fa-spinner")
+				$("#check .fa").addClass("fa-spin fa-spinner")
 			},
 			success: function(data, status, xhr){
 				debug("success:")
 				$("#results").removeClass("text-danger")
-				$("#results").html(data.summary + " <br> " + data.message)
+				$("#summary").html(data.summary)
+				switch (data.summary) {
+				  case "YES":
+					$("#summary").addClass("text-success")
+				    break;
+				  case "MAYBE":
+					$("#summary").addClass("text-warning")
+				    break;
+				  case "NO":
+					$("#summary").addClass("text-danger")
+				    break;
+				}				
+				$("#message").html(data.message)
+				// $("#more-info-btn").show()
 			},
 			error: function(xhr, status, error){
 				switch (xhr.status) {
@@ -36,7 +49,7 @@ $(function() {
 			},
 			// Called on success and error
 			complete: function(xhr, status){
-				$("a .fa").removeClass("fa-spin fa-spinner")
+				$("#check .fa").removeClass("fa-spin fa-spinner")
 			}
 		});
 
@@ -51,4 +64,8 @@ $(function() {
 	$(document).on("click", "#check", function() {
 		$("form").submit();		
 	});
+
+	$(document).on("click", "#more-info-btn", function() {
+		$("#more-info").toggle();		
+	});	
 });	

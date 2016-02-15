@@ -22,7 +22,7 @@ module Outside
     end
     params do
       requires :zipcode, length_exactly: 5
-      optional :distance, type: Integer, default: 25
+      optional :distance, type: Integer, default: 50
     end 
     get :zipcode do
       zipcode = params[:zipcode]

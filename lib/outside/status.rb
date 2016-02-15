@@ -22,7 +22,7 @@ module Outside
       when "Moderate"
         ["The air could be better", "Meh, not great."].sample
       when "Unhealthy for Sensitive Groups"
-        ["Better to stay inside.", "Stay inside if you're sensitive."].sample
+        ["Better to stay inside.", "Stay inside if you're sensitive.", "You shouldn't if you have allergies or asthma.", "Pregnant? Better not risk it."].sample
       when "Unhealthy"
         ["Stay inside if you can."].sample      
       when "Very Unhealthy"

@@ -21,9 +21,9 @@
 					<div class="inner cover">
 						<h1 class="cover-heading">Should I go outside?</h1>
 						<p class="lead">A quick check for local air quality.</p>
-						<form>
+						<form class="">
 							<div class="form-group">
-									<input type="text" name="zipcode" class="form-control input-lg" placeholder="Zip Code" maxlength="5" autofocus>
+									<input type="text" name="zipcode" class="form-control input-lg" placeholder="Zip Code" maxlength="5" autofocus value="84043">
 							</div>
 						</form>
 						<p class="lead">
@@ -33,6 +33,19 @@
 							</a>
 						</p>
 						<div id="results">
+							<div id="summary"></div>
+							<div id="message"></div>
+						</div>
+						<a href="#" id="more-info-btn" class="">
+							More info
+							<i class="fa fa-chevron-down fa-fw"></i>
+						</a>
+						<div id="more-info">
+							<table class="table">
+								<tr>
+									<td>Reporting Station</td>
+									<td></td>
+							</table>
 						</div>
 					</div>
 
