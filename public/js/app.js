@@ -27,6 +27,7 @@ $(function() {
 			success: function(data, status, xhr){
 				debug("success:")
 				debug(data)
+				$("#results").removeClass("text-danger")
 				$("#results").html(data.message)
 			},
 			error: function(xhr, status, error){
