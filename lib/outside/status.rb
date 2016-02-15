@@ -18,7 +18,7 @@ module Outside
       when "Good"
         ["Things are looking good.", "Perfect day for a walk"].sample
       when "Moderate"
-        ["The air could be better", "Meh, not great."].sample
+        ["The air could be better though.", "Meh, not great.", "Air quality is MODERATE"].sample
       when "Unhealthy for Sensitive Groups"
         ["Unhealthy for Sensitive Groups", "Stay inside if you're sensitive.", "You shouldn't if you have allergies or asthma.", "Pregnant? Better not risk it."].sample
       when "Unhealthy"

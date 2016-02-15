@@ -27,7 +27,7 @@ module Outside
     get :zipcode do
       zipcode = params[:zipcode]
       forecasts = Outside::AirNow.forecasts(zipcode: zipcode)
-      raise "No monitoring stations found within #{params[:distance]} miles of #{params[:zipcode]}" if forecasts.empty?
+      raise "No forecasts found within #{params[:distance]} miles of #{params[:zipcode]}" if forecasts.empty?
       
       # Get current PM2.5 reading for today
       pm2_forecast = forecasts.find {|i| i["ParameterName"] == "PM2.5"}
@@ -35,6 +35,7 @@ module Outside
       pm2_status = Outside::Status.new(pm2_forecast)
 
       { 
+        source: forecasts ? "forecast" : "current reading",
         forecasts: forecasts,
         status: {
           pm2: pm2_status,

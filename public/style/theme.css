@@ -17,7 +17,7 @@ body {
 #more-info-btn {
 }
 
-#more-info-btn, #more-info {
+#more-info-btn, #more-info, .progress {
 	display: none;
 }
 
