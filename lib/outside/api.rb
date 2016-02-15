@@ -24,7 +24,10 @@ module Outside
     get :zipcode do
       zipcode = params[:zipcode]
       observations = Outside::AirNow.observations(zipcode: zipcode)
-      { observations: observations }
+      { 
+        observations: observations,
+        message: Outside::Status.new(observations).message
+      }
     end
 
     get :hello do

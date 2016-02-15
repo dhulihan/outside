@@ -13,12 +13,12 @@ RSpec.describe Outside::API do
       expect(last_response.status).to eq(400)
     end
 
-
     it 'returns a correct response' do
       get '/api/v1/zipcode', {zipcode: "84043"}
       expect(last_response.status).to eq(200)
       j = JSON.parse(last_response.body)
-      expect(j["observations"]).to_not be_nil
+      expect(j["observations"]).to_not be_empty
+      expect(j["message"]).to_not be_nil
     end
   end  
 end
