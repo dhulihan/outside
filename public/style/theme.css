@@ -28,3 +28,15 @@
   /* Set the fixed height of the footer here */
   background-color: #333;
 }
+
+.text-warning {
+	color: #eef948;
+}
+
+.text-success {
+	color: #47f770;
+}
+
+.text-danger {
+	color: #f44646;
+}
