@@ -1,4 +1,4 @@
-A simple API and frontend to check if it's safe to go outside. Backend API written in ruby (grape). Static frontend in html/jquery. 
+A simple API and frontend to check if it's safe to go outside. Backend API written in ruby ([grape](https://github.com/ruby-grape/grape)). Static frontend in html/jquery. 
 
 ![](screenshot.png)
 
