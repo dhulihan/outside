@@ -1,1 +1,6 @@
 #results {font-size: 2em}
+.form-group {text-align: center;}
+.form-control {
+	width: 120px;
+	margin: 0 auto;
+}

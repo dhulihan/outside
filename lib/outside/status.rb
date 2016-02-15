@@ -1,11 +1,12 @@
 module Outside
   class Status
-    attr_accessor :message
+    attr_accessor :message, :summary
 
     def initialize(observations = [])
       aqi_obs = observations.find {|i| i["ParameterName"] == "PM2.5"}
       if aqi_obs
         @message = ambiguous_message(aqi_obs["Category"]["Name"])
+        @summary = ambiguous_summary(aqi_obs["Category"]["Name"])
       else
         raise "No AQI observation found: #{observations.inspect}"
       end
@@ -30,6 +31,26 @@ module Outside
         "No sure. Try again later."
       end
     end
+
+    def ambiguous_summary(category = "")
+      case category
+      when "Good"
+        "YES"
+      when "Moderate"
+        "YES"
+      when "Unhealthy for Sensitive Groups"
+        "MAYBE"
+      when "Unhealthy"
+        "NO"    
+      when "Very Unhealthy"
+        "NO"
+      when "Hazardous"
+        "NO"
+      else
+        "N/A"
+      end
+    end  
+
 
     def to_s
       @message

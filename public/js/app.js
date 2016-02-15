@@ -20,7 +20,7 @@ $(function() {
 				debug("success:")
 				debug(data)
 				$("#results").removeClass("text-danger")
-				$("#results").html(data.category + " <br> " + data.message)
+				$("#results").html(data.summary + " <br> " + data.message)
 			},
 			error: function(xhr, status, error){
 				var resp = $.parseJSON(xhr.responseText)

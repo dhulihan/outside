@@ -25,10 +25,12 @@ module Outside
       zipcode = params[:zipcode]
       observations = Outside::AirNow.observations(zipcode: zipcode)
       pm_obs = observations.find {|i| i["ParameterName"] == "PM2.5"}
+      status = Outside::Status.new([pm_obs])
       { 
         observations: observations,
         category: pm_obs["Category"]["Name"],
-        message: Outside::Status.new([pm_obs]).message
+        message: status.message,
+        summary: status.summary
       }
     end
 
