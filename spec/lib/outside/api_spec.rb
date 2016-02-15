@@ -17,18 +17,18 @@ RSpec.describe Outside::API do
       get '/api/v1/zipcode', {zipcode: "84043"}
       j = JSON.parse(last_response.body)
       expect(last_response.status).to eq(200)
-      expect(j["observations"]).to_not be_nil
+      expect(j["forecasts"]).to_not be_nil
       expect(j["status"]).to_not be_nil
     end
 
-    context 'using the zip with only O3 nearby' do
-      it 'handles the problem gracefully' do
+    context 'using the zip from slc' do
+      it 'should work also' do
         get '/api/v1/zipcode', {zipcode: "84101"}
-        expect(last_response.status).to eq(500)
+        expect(last_response.status).to eq(200)
         j = JSON.parse(last_response.body)
-        expect(j["error"]).to_not be_nil
-        expect(j["observations"]).to be_nil
-        expect(j["error"]).to_not be_nil
+        expect(j["error"]).to be_nil
+        expect(j["forecasts"]).to_not be_nil
+        expect(j["error"]).to be_nil
       end
     end    
   end  
