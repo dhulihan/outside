@@ -1,5 +1,7 @@
 A simple API and frontend to check if it's safe to go outside
 
+![](screenshot.png)
+
 ## Setup 
 
 First, sign up for an API key at AirNow.
