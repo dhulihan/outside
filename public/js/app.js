@@ -18,13 +18,20 @@ $(function() {
 			},
 			success: function(data, status, xhr){
 				debug("success:")
-				debug(data)
 				$("#results").removeClass("text-danger")
 				$("#results").html(data.summary + " <br> " + data.message)
 			},
 			error: function(xhr, status, error){
-				var resp = $.parseJSON(xhr.responseText)
-				$("#results").html(resp.error)
+				switch (xhr.status) {
+				  case 500:
+				    console.log("Got 500");
+				    break;
+				  case 400:
+				    console.log("Got 400");
+				    break;
+				}				
+				debug(xhr)
+				$("#results").html(xhr.responseJSON.error)
 				$("#results").addClass("text-danger")
 			},
 			// Called on success and error

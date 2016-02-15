@@ -3,12 +3,14 @@ module Outside
     attr_accessor :message, :summary
 
     def initialize(observations = [])
-      aqi_obs = observations.find {|i| i["ParameterName"] == "PM2.5"}
-      if aqi_obs
-        @message = ambiguous_message(aqi_obs["Category"]["Name"])
-        @summary = ambiguous_summary(aqi_obs["Category"]["Name"])
-      else
-        raise "No AQI observation found: #{observations.inspect}"
+      unless observations.empty?
+        aqi_obs = observations.find {|i| i["ParameterName"] == "PM2.5"}
+        if aqi_obs
+          @message = ambiguous_message(aqi_obs["Category"]["Name"])
+          @summary = ambiguous_summary(aqi_obs["Category"]["Name"])
+        else
+          raise "No AQI observation found: #{observations.inspect}"
+        end
       end
     end
 
