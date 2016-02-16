@@ -1,4 +1,6 @@
-A simple API and frontend to check if it's safe to go outside. Backend API written in ruby ([grape](https://github.com/ruby-grape/grape)). Static frontend in html/jquery. 
+A simple API and frontend that tells you if you should go outside during days with questionable air quality. Pulls local AQI (Air Quality Index) data from [AirNow's](http://www.airnow.gov/) API.
+
+Backend API is written in ruby ([grape](https://github.com/ruby-grape/grape)). Static frontend uses html/jquery. 
 
 ![](screenshot.png)
 
